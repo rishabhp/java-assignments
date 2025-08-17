@@ -82,18 +82,24 @@ class CurrentAccount extends BankAccount {
 
 public class BankAccountManagement {
     public static void main(String[] args) {
-        BankAccount[] accounts = {
-            new SavingsAccount(35778, "Kishan Singh", 5000),
-            new CurrentAccount(10010, "Amit Verma", 2000),
-            new SavingsAccount(12345, "Priya Mehta", 800),
-            new CurrentAccount(54321, "Ravi Sharma", 100)
-        };
+        BankAccount acc1 = new SavingsAccount(10010, "Kishan Singh", 500);
+        BankAccount acc2 = new CurrentAccount(30276, "Kinjal Shah", 0);
 
-        for (BankAccount account : accounts) {
-            System.out.println(account);
-            System.out.println("-----------------------------------------------------------");
+        acc1.deposit(4500);
+        acc2.deposit(1000);
+
+        System.out.println("Account 1:-\n" + acc1 + "\n-------------------------------------------------------------------------------------------------");
+        System.out.println("Account 2:-\n" + acc2 + "\n-------------------------------------------------------------------------------------------------");
+
+        System.out.println("Withdrawing 1500 from current account (Overdraft of 1000 allowed)");
+        acc2.withdraw(1500);
+        System.out.println("Updated Account:-\n" + acc2 + "\n-------------------------------------------------------------------------------------------------");
+
+        try {
+            System.out.println("Withdrawing 4700 from savings account (Minimum Balance: 500)");
+            acc1.withdraw(4700);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
-        
     }
 }
