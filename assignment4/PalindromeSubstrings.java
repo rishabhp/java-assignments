@@ -14,14 +14,17 @@ public class PalindromeSubstrings {
 
     public void printPalindromeSubstrings() {
         int len = str.length();
+        int count = 0;
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j < len; j++) {
                 String tempStr = str.substring(i, j+1);
                 if (isPalindrome(tempStr)) {
                     System.out.println(tempStr + " is a Palindrome Substring, starting from index " + i + " and ending at index " + j);
+                    count++;
                 }
             }
         }
+        System.out.println("Number of palindrome substrings: " + count);
     }
 
     public static void main(String[] args) {
